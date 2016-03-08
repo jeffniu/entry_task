@@ -74,7 +74,7 @@ DATABASES = {
         'NAME': 'et',
         'USER': 'ngy',
         'PASSWORD': '12345',
-        'HOST': '10.2.64.154',
+        'HOST': '127.0.0.1',
         'PORT': '3306',
     }
 }
