@@ -91,6 +91,23 @@ def update_nickname(request):
 
 	return HttpResponse(json.dumps(response_data), content_type="application/json")
 
+def check_token(request):
+	response_data = {}
+	if request.method == 'GET':
+		tokenStr = request.GET.get('token', '')
+		if isTokenValid(tokenStr):
+			response_data['error_code'] = 0
+			response_data['error_message'] = 'Ok'
+		else:
+			response_data['error_code'] = 2
+			response_data['error_message'] = 'access token is invalid'
+	else:
+		response_data['error_code'] = 3
+		response_data['error_message'] = 'Only GET is allowed!'	
+		
+	return HttpResponse(json.dumps(response_data), content_type="application/json")
+
+
 
 def isTokenValid(token):
 	if not token:
